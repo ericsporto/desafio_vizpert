@@ -1,4 +1,4 @@
-import { Container, Text, List, HStack, Image, Box, useControllableState} from "@chakra-ui/react";
+import { Container, Text, List, HStack, Image, Box} from "@chakra-ui/react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import Book from "./Components/Book";
@@ -6,44 +6,94 @@ import AnalogicClock from "./Components/AnalogicClock";
 
 function App() {
   const [books, setBook] = useState([
-    { book: <Image src="Images/book_a.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_b.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_c.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_d.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_f.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_g.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_h.svg" boxSize="80px"/> },
-    { book: <Image src="Images/book_i.svg" boxSize="80px"/> },
-  ]);
+    { 
+      book: <Image src="Images/book_a.svg" boxSize="80px"/>,
+      size: "4",
+      id: "1",
+      color: "3"
+   },
+    { book: <Image src="Images/book_b.svg" boxSize="80px"/>,
+      size: "7",
+      id: "2",
+      color: "1"
+   },
+    { book: <Image src="Images/book_c.svg" boxSize="80px"/>,
+      size: "2",
+      id: "3",
+      color: "2"
+   },
+    { book: <Image src="Images/book_d.svg" boxSize="80px"/>,
+      size: "1",
+      id: "4",
+      color: "7"
+   },
+   { book: <Image src="Images/book_e.svg" boxSize="80px"/>,
+      size: "6",
+      id: "9",
+      color: "5"
+   },
+    { book: <Image src="Images/book_f.svg" boxSize="80px"/>,
+      size : "8",
+      id: "5",
+      color: "9"
+   },
+    { book: <Image src="Images/book_g.svg" boxSize="80px"/>,
+      size: "9",
+      id: "6",
+      color: "8"
+   },
+    { book: <Image src="Images/book_h.svg" boxSize="80px"/>,
+      size: "3",
+      id: "7",
+      color: "6"      
+   },
+    { book: <Image src="Images/book_i.svg" boxSize="80px"/>,
+      size: "5",
+      id: "8",
+      color: "4"
+   },
 
-  const [board, setBoard] = useState([]);
+  ])
+
+  const [board, setBoard] = useState([])
 
   const [{ isOver }, addToBoardRef] = useDrop({
     accept: "book",
     collect: (monitor) => ({ isOver: !!monitor.isOver() }),
   });
 
-  console.log(isOver);
   const [{ isOver: isBookOver }, removeFromBoardRef] = useDrop({
     accept: "board",
     collect: (monitor) => ({ isOver: !!monitor.isOver() }),
-  });
+  })
 
   const moveBookToBoard = (item) => {
-    console.log(item);
-    setBook((prev) => prev.filter((_, i) => item.index !== i));
-    setBoard((prev) => [...prev, item]);
-  };
-  const removeBookFromBoard = (item) => {
-    setBoard((prev) => prev.filter((_, i) => item.index !== i));
-    setBook((prev) => [...prev, item]);
-  };
-
-  function AlphabeticalOrder(e) {
-    e.preventDefault()
-
-    window.location.reload(false);
+    setBook((prev) => prev.filter((_, i) => item.index !== i))
+    setBoard((prev) => [...prev, item])
   }
+  const removeBookFromBoard = (item) => {
+    setBoard((prev) => prev.filter((_, i) => item.index !== i))
+    setBook((prev) => [...prev, item])
+  }
+
+  const sortedBySize = books.sort((a, b) => {
+    if(a.size < b.size) return -1
+    if(a.size > b.size) return 1
+    return 0
+  })
+
+  const sortedByAlphabetic = books.sort((a, b) => {
+    if(a.id < b.id) return -1
+    if(a.id > b.id) return 1
+    return 0
+  })
+  const sortedByColor = books.sort((a, b) => {
+    if(a.color < b.color) return -1
+    if(a.color > b.color) return 1
+    return 0
+  })
+
+  
 
   return (
     <Container 
@@ -156,21 +206,24 @@ function App() {
             <Image src="Images/filter_button_active.svg" width="90%"
             marginLeft="-260%"
             marginTop="-80%"
-            onClick={AlphabeticalOrder}>
+            onClick={sortedByAlphabetic}
+            >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
             marginLeft="-240%"
             marginTop="-80%"
-            onClick={AlphabeticalOrder}>
+            onClick={sortedByColor}
+            >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
             marginLeft="-210%"
             marginTop="-80%"
-            onClick={AlphabeticalOrder}>
+            onClick={sortedBySize}
+            >
             </Image>            
           </HStack>
         </HStack>
@@ -189,7 +242,8 @@ function App() {
           width="1%"
           marginLeft="23.5%"
           marginTop="-22.5%"
-          onClick={AlphabeticalOrder}>
+          onClick={sortedByAlphabetic}
+          >
           </Image>            
         </HStack>
         <HStack>
@@ -197,15 +251,17 @@ function App() {
           width="1.5%"
           marginLeft="28.7%"
           marginTop="-22.7%"
-          onClick={AlphabeticalOrder}>
+          onClick={sortedByColor}
+          >
           </Image>            
         </HStack>
         <HStack>
-          <Image src="Images/filter_sizes.svg" 
+          <Image id="image-1" src="Images/filter_sizes.svg" 
           width="1.5%"
           marginLeft="34.1%"
           marginTop="-22.7%"
-          onClick={AlphabeticalOrder}>
+          onClick={sortedBySize}
+          >
           </Image>            
         </HStack>
         <Text 
@@ -220,7 +276,7 @@ function App() {
             <Image src="Images/button.svg" 
             width="15%"
             marginLeft="22%"
-            onClick={AlphabeticalOrder}>
+            >
           </Image>            
           </HStack>
 
