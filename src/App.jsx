@@ -146,7 +146,7 @@ function App() {
         height="35vh" 
         bgImage="Images/lady.svg" 
         bgRepeat="no-repeat" 
-        marginLeft="5%"
+        marginLeft="7%"
         marginTop="-15%">
                             
         </HStack>
