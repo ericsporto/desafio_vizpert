@@ -1,4 +1,4 @@
-import { Container, Text, List, HStack, Image, Box} from "@chakra-ui/react";
+import { Container, Text, List, HStack, Image, Box, Button} from "@chakra-ui/react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import Book from "./Components/Book";
@@ -26,11 +26,6 @@ function App() {
       size: "1",
       id: "4",
       color: "7"
-   },
-   { book: <Image src="Images/book_e.svg" boxSize="80px"/>,
-      size: "6",
-      id: "9",
-      color: "5"
    },
     { book: <Image src="Images/book_f.svg" boxSize="80px"/>,
       size : "8",
@@ -76,24 +71,9 @@ function App() {
     setBook((prev) => [...prev, item])
   }
 
-  const sortedBySize = books.sort((a, b) => {
-    if(a.size < b.size) return -1
-    if(a.size > b.size) return 1
-    return 0
+  const ordenedBySize = books.sort((a, b) => {
+    return a.size - b.size
   })
-
-  const sortedByAlphabetic = books.sort((a, b) => {
-    if(a.id < b.id) return -1
-    if(a.id > b.id) return 1
-    return 0
-  })
-  const sortedByColor = books.sort((a, b) => {
-    if(a.color < b.color) return -1
-    if(a.color > b.color) return 1
-    return 0
-  })
-
-  
 
   return (
     <Container 
@@ -170,98 +150,100 @@ function App() {
         </HStack>
 
         <HStack 
-        width="30%" 
-        height="25vh" 
-        bgImage="Images/clock_base.svg" bgRepeat="no-repeat" 
-        marginLeft="12%"
-        marginTop="-30%">       
+          width="30%" 
+          height="25vh" 
+          bgImage="Images/clock_base.svg" bgRepeat="no-repeat" 
+          marginLeft="12%"
+          marginTop="-30%">       
         </HStack>
 
         <HStack 
-        width="15%" 
-        height="30vh" 
-        bgImage="Images/logo.svg" 
-        bgRepeat="no-repeat" 
-        marginLeft="75%"
-        marginTop="-13%">                    
+          width="15%" 
+          height="30vh" 
+          bgImage="Images/logo.svg" 
+          bgRepeat="no-repeat" 
+          marginLeft="75%"
+          marginTop="-13%">
+          
+
         </HStack>
 
         <Box marginLeft="12.7%" marginTop="-13%"><AnalogicClock/></Box>
 
         <HStack 
-        width="38%" 
-        height="32vh" 
-        bgImage="Images/board.svg" 
-        bgRepeat="no-repeat" 
-        marginLeft="7%"
-        marginTop="17%">
+          width="38%" 
+          height="32vh" 
+          bgImage="Images/board.svg" 
+          bgRepeat="no-repeat" 
+          marginLeft="7%"
+          marginTop="17%">
           <Text 
-          fontSize="xl" 
-          color="gray"
-          marginLeft="50%"
-          marginTop="-30%"
-          width="80%">SORT BY</Text>
+            fontSize="xl" 
+            color="gray"
+            marginLeft="50%"
+            marginTop="-30%"
+            width="80%">SORT BY</Text>
 
           <HStack>
             <Image src="Images/filter_button_active.svg" width="90%"
-            marginLeft="-260%"
-            marginTop="-80%"
-            onClick={sortedByAlphabetic}
+              marginLeft="-260%"
+              marginTop="-80%"
+              
             >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
-            marginLeft="-240%"
-            marginTop="-80%"
-            onClick={sortedByColor}
-            >
+              marginLeft="-240%"
+              marginTop="-80%"
+              
+              >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
-            marginLeft="-210%"
-            marginTop="-80%"
-            onClick={sortedBySize}
-            >
+              marginLeft="-210%"
+              marginTop="-80%"
+              onClick={([]) => setBook([ordenedBySize])}
+              
+              
+              >
             </Image>            
           </HStack>
         </HStack>
 
         <HStack 
-        width="15%" 
-        height="35vh" 
-        bgImage="Images/lady.svg" 
-        bgRepeat="no-repeat" 
-        marginLeft="7%"
-        marginTop="-15%">          
+          width="15%" 
+          height="35vh" 
+          bgImage="Images/lady.svg" 
+          bgRepeat="no-repeat" 
+          marginLeft="7%"
+          marginTop="-15%">          
         </HStack>
 
         <HStack>
           <Image src="Images/filter_alphabetic.svg" 
-          width="1%"
-          marginLeft="23.5%"
-          marginTop="-22.5%"
-          onClick={sortedByAlphabetic}
+            width="1%"
+            marginLeft="23.5%"
+            marginTop="-22.5%"
+            
           >
           </Image>            
         </HStack>
         <HStack>
           <Image src="Images/filter_colors.svg" 
-          width="1.5%"
-          marginLeft="28.7%"
-          marginTop="-22.7%"
-          onClick={sortedByColor}
+            width="1.5%"
+            marginLeft="28.7%"
+            marginTop="-22.7%"
+            
           >
           </Image>            
         </HStack>
         <HStack>
           <Image id="image-1" src="Images/filter_sizes.svg" 
-          width="1.5%"
-          marginLeft="34.1%"
-          marginTop="-22.7%"
-          onClick={sortedBySize}
-          >
+            width="1.5%"
+            marginLeft="34.1%"
+            marginTop="-22.7%">
           </Image>            
         </HStack>
         <Text 
@@ -274,11 +256,29 @@ function App() {
 
           <HStack>
             <Image src="Images/button.svg" 
-            width="15%"
-            marginLeft="22%"
+              width="15%"
+              marginLeft="22%"
             >
-          </Image>            
+          </Image>
+                      
           </HStack>
+
+          <Button  
+            width="10%"
+            bg="#38E655"
+            variant='solid'
+            border="white"
+            marginLeft="45%"
+            marginTop="-5%"
+            onClick={() => setBook([
+              ...books, 
+              { book: <Image src="Images/book_e.svg" boxSize="80px"/>,
+              size: "6",
+              id: "9",
+              color: "5"
+              },
+              
+            ])}>Add Book</Button>
 
         
         
