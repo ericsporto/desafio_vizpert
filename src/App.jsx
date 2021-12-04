@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, List, HStack, Image, Box } from "@chakra-ui/react";
+import { Container, Text, List, HStack, Image, Box, useControllableState} from "@chakra-ui/react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import Book from "./Components/Book";
@@ -38,6 +38,12 @@ function App() {
     setBoard((prev) => prev.filter((_, i) => item.index !== i));
     setBook((prev) => [...prev, item]);
   };
+
+  function AlphabeticalOrder(e) {
+    e.preventDefault()
+
+    window.location.reload(false);
+  }
 
   return (
     <Container 
@@ -138,7 +144,35 @@ function App() {
         bgImage="Images/board.svg" 
         bgRepeat="no-repeat" 
         marginLeft="7%"
-        marginTop="17%">                    
+        marginTop="17%">
+          <Text 
+          fontSize="xl" 
+          color="gray"
+          marginLeft="50%"
+          marginTop="-30%"
+          width="80%">SORT BY</Text>
+
+          <HStack>
+            <Image src="Images/filter_button_active.svg" width="90%"
+            marginLeft="-260%"
+            marginTop="-80%"
+            onClick={AlphabeticalOrder}>
+            </Image>            
+          </HStack>
+          <HStack>
+            <Image src="Images/filter_button.svg" width="100%"
+            marginLeft="-240%"
+            marginTop="-80%"
+            onClick={AlphabeticalOrder}>
+            </Image>            
+          </HStack>
+          <HStack>
+            <Image src="Images/filter_button.svg" width="100%"
+            marginLeft="-210%"
+            marginTop="-80%"
+            onClick={AlphabeticalOrder}>
+            </Image>            
+          </HStack>
         </HStack>
 
         <HStack 
@@ -147,11 +181,51 @@ function App() {
         bgImage="Images/lady.svg" 
         bgRepeat="no-repeat" 
         marginLeft="7%"
-        marginTop="-15%">
-                            
+        marginTop="-15%">          
         </HStack>
 
+        <HStack>
+          <Image src="Images/filter_alphabetic.svg" 
+          width="1%"
+          marginLeft="23.5%"
+          marginTop="-22.5%"
+          onClick={AlphabeticalOrder}>
+          </Image>            
+        </HStack>
+        <HStack>
+          <Image src="Images/filter_colors.svg" 
+          width="1.5%"
+          marginLeft="28.7%"
+          marginTop="-22.7%"
+          onClick={AlphabeticalOrder}>
+          </Image>            
+        </HStack>
+        <HStack>
+          <Image src="Images/filter_sizes.svg" 
+          width="1.5%"
+          marginLeft="34.1%"
+          marginTop="-22.7%"
+          onClick={AlphabeticalOrder}>
+          </Image>            
+        </HStack>
+        <Text 
+          fontSize="xl" 
+          color="gray"
+          marginLeft="21%"
+          marginTop="-11%"
+          width="20%"
+          fontSize="4xl">_________________</Text>
 
+          <HStack>
+            <Image src="Images/button.svg" 
+            width="15%"
+            marginLeft="22%"
+            onClick={AlphabeticalOrder}>
+          </Image>            
+          </HStack>
+
+        
+        
 
       </Container>
 
