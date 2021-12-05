@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Camada_1" x="0px" y="0px" viewBox="0 0 72.5 207" style="enable-background:new 0 0 72.5 207;" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+	.st0{fill:#5e5b5b;}
+	.st1{fill:#E7DFEF;}
+</style>
+  <g>
+    <g>
+      <path class="st0" d="M63.5,18c0,17.5,0,36.5,0,54h-9v9c-11.3,0-24.7,0-36,0v-9h-9c0-17.5,0-36.5,0-54h-9c0,59.9,0,120.1,0,180h9v9 c17.5,0,36.5,0,54,0v-9h9c0-59.9,0-120.1,0-180H63.5z"/>
+      <path class="st1" d="M54.5,27c-14.4,0-30.6,0-45,0c0,14.4,0,30.6,0,45h9v9c11.3,0,24.7,0,36,0v-9h9c0-14.4,0-30.6,0-45H54.5z"/>
+    </g>
+    <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 9px; font-weight: 700; white-space: pre;" transform="matrix(3.050751, 0, 0, 2.897194, -79.975937, -322.848755)" x="34.607" y="175.931">K</text>
+  </g>
+</svg>

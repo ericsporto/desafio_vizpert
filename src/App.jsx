@@ -4,51 +4,69 @@ import { useDrop } from "react-dnd";
 import Book from "./Components/Book";
 import AnalogicClock from "./Components/AnalogicClock";
 
+//My book objects.
+
 function App() {
   const [books, setBook] = useState([
     { 
       book: <Image src="Images/book_a.svg" boxSize="80px"/>,
-      size: "4",
-      id: "1",
-      color: "3"
+      size: 4,
+      id: 1,
+      color: 3,
+      year: 1956
    },
     { book: <Image src="Images/book_b.svg" boxSize="80px"/>,
-      size: "7",
-      id: "2",
-      color: "1"
+      size: 9,
+      id: 2,
+      color: 1,
+      year: 2000
    },
     { book: <Image src="Images/book_c.svg" boxSize="80px"/>,
-      size: "2",
-      id: "3",
-      color: "2"
+      size: 2,
+      id: 3,
+      color: 2,
+      year: 1945
    },
     { book: <Image src="Images/book_d.svg" boxSize="80px"/>,
-      size: "1",
-      id: "4",
-      color: "7"
+      size: 1,
+      id: 4,
+      color: 7,
+      year: 1990
+   },
+    { book: <Image src="Images/book_e.svg" boxSize="80px"/>,
+      size: 8,
+      id: 5,
+      color: 5,
+      year: 1979
    },
     { book: <Image src="Images/book_f.svg" boxSize="80px"/>,
-      size : "8",
-      id: "5",
-      color: "9"
+      size : 10,
+      id: 6,
+      color: 9,
+      year: 1908
    },
     { book: <Image src="Images/book_g.svg" boxSize="80px"/>,
-      size: "9",
-      id: "6",
-      color: "8"
+      size: 11,
+      id: 7,
+      color: 8,
+      year: 1915
    },
     { book: <Image src="Images/book_h.svg" boxSize="80px"/>,
-      size: "3",
-      id: "7",
-      color: "6"      
+      size: 3,
+      id: 8,
+      color: 6,
+      year: 2007
    },
     { book: <Image src="Images/book_i.svg" boxSize="80px"/>,
-      size: "5",
-      id: "8",
-      color: "4"
+      size: 7,
+      id: 9,
+      color: 4,
+      year: 2015
    },
 
   ])
+
+  // Making Drag and Drop books and boards.
 
   const [board, setBoard] = useState([])
 
@@ -71,9 +89,54 @@ function App() {
     setBook((prev) => [...prev, item])
   }
 
-  const ordenedBySize = books.sort((a, b) => {
-    return a.size - b.size
-  })
+  // Functions to delete, ordered books and refresh page.
+
+  function handleDeleteBook(deletedBook) {
+    console.log("handleDeleteBook working")
+    const filteredBooks = books.filter((books) => books.index !== deletedBook)
+    setBook(filteredBooks)
+    
+  }
+
+  function orderedBySize () {
+    console.log ("ordenedBySize is working")
+    const orderedBooksBySize = books.sort((a, b) => a.size - b.size)
+    setBook(orderedBooksBySize)
+    setBoard(orderedBooksBySize)
+    
+  }
+  
+
+  function orderedByColor () {
+    console.log ("ordenedByColor is working")
+    const orderedBooksByColor = books.sort((a, b) => a.color - b.color)
+    setBook(orderedBooksByColor)
+    setBoard(orderedBooksByColor)
+    
+  }
+
+  function orderedByAlphabet () {
+    console.log ("ordenedByAlphabet is working")
+    const orderedBooksByAlphabet = books.sort((a, b) => a.id - b.id)
+    setBook(orderedBooksByAlphabet)
+    setBoard(orderedBooksByAlphabet)
+    
+  }
+
+  function orderedByYear () {
+    console.log ("ordenedByYear is working")
+    const orderedBooksByYear = books.sort((a, b) => a.year - b.year)
+    setBook(orderedBooksByYear)
+    setBoard(orderedBooksByYear)
+    
+  }
+
+ 
+  function refreshPage() {
+     
+    window.location.reload(false);
+  }
+  
 
   return (
     <Container 
@@ -186,29 +249,29 @@ function App() {
 
           <HStack>
             <Image src="Images/filter_button_active.svg" width="90%"
-              marginLeft="-260%"
+              marginLeft="-310%"
               marginTop="-80%"
+              onClick={() => orderedByAlphabet()}
               
             >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
-              marginLeft="-240%"
-              marginTop="-80%"
+              marginLeft="-180%"
+              marginTop="-83%"
+              onClick={() => orderedByColor()}
               
               >
             </Image>            
           </HStack>
           <HStack>
             <Image src="Images/filter_button.svg" width="100%"
-              marginLeft="-210%"
+              marginLeft="-160%"
               marginTop="-80%"
-              onClick={([]) => setBook([ordenedBySize])}
-              
-              
-              >
-            </Image>            
+              onClick={() => orderedBySize()}>
+            </Image>
+                        
           </HStack>
         </HStack>
 
@@ -224,8 +287,9 @@ function App() {
         <HStack>
           <Image src="Images/filter_alphabetic.svg" 
             width="1%"
-            marginLeft="23.5%"
+            marginLeft="21.5%"
             marginTop="-22.5%"
+            onClick={() => orderedByAlphabet()}
             
           >
           </Image>            
@@ -233,18 +297,20 @@ function App() {
         <HStack>
           <Image src="Images/filter_colors.svg" 
             width="1.5%"
-            marginLeft="28.7%"
-            marginTop="-22.7%"
-            
+            marginLeft="30.9%"
+            marginTop="-22.8%"
+            onClick={() => orderedByColor()}
           >
           </Image>            
         </HStack>
         <HStack>
           <Image id="image-1" src="Images/filter_sizes.svg" 
             width="1.5%"
-            marginLeft="34.1%"
-            marginTop="-22.7%">
-          </Image>            
+            marginLeft="36%"
+            marginTop="-22.7%"
+            onClick={() => orderedBySize()}>
+          </Image> 
+
         </HStack>
         <Text 
           fontSize="xl" 
@@ -258,6 +324,7 @@ function App() {
             <Image src="Images/button.svg" 
               width="15%"
               marginLeft="22%"
+              onClick={() => refreshPage()}
             >
           </Image>
                       
@@ -272,16 +339,47 @@ function App() {
             marginTop="-5%"
             onClick={() => setBook([
               ...books, 
-              { book: <Image src="Images/book_e.svg" boxSize="80px"/>,
-              size: "6",
-              id: "9",
-              color: "5"
+              
+              { book: <Image src="Images/book_j.svg" boxSize="80px"/>,
+              size: 5,
+              id: 10,
+              color: 10,
+              year: 1988
+              },
+              { book: <Image src="Images/book_k.svg" boxSize="80px"/>,
+              size: 6,
+              id: 11,
+              color: 11,
+              year: 2004
               },
               
             ])}>Add Book</Button>
 
-        
-        
+            <Button  
+              width="10%"
+              bg="#38E655"
+              variant='solid'
+              border="white"
+              marginLeft="60%"
+              marginTop="-8.2%"
+              onClick={() => handleDeleteBook(books.index)}
+            >Remove Book</Button>
+
+            <HStack>    
+              <Image src="Images/filter_button.svg" 
+                width="3.5%"
+                marginLeft="25%"
+                marginTop="-22%"
+                onClick={() => orderedByYear()}>
+              </Image>            
+            </HStack>
+            <Text 
+            fontSize="xl" 
+            color="red"
+            marginLeft="25.4%"
+            marginTop="-12%"
+            width="80%"
+            onClick={() => orderedByYear()}>Year</Text>
 
       </Container>
 
