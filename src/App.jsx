@@ -1,4 +1,5 @@
 import { Container, Text, List, HStack, Image, Box, Button} from "@chakra-ui/react";
+
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import Book from "./Components/Book";
@@ -66,7 +67,7 @@ function App() {
 
   ])
 
-  // Making Drag and Drop books and boards.
+  // Making boards Drag and Drop.
 
   const [board, setBoard] = useState([])
 
@@ -140,33 +141,40 @@ function App() {
   
 
   return (
-    <Container 
-    maxW="100%" 
-    height="100vh" 
-    border="solid transparent" 
+    <Container
+     
+    maxW={["500%","500%","200%","100%"]}
+    overflow="hidden"
+    overflowX="hidden" 
+    height={["1500px", "1500px", "1500px", "1500px"]} 
+    border="solid transparent"
+    bgRepeat="no-repeat" 
     bgImage="Images/bg_stripes.svg" 
     padding="0px">
 
-      <Container 
+      <Container
+       
       border="solid transparent" 
       bgImage="Images/ground.svg" 
-      height="49vh" 
+      height={[ "50vh", "50vh", "50vh", "49vh"]} 
       maxW="100%" 
-      marginTop="24%">
+      marginTop={["70%" , "70%", "50%", "24%"]}>
 
-        <HStack 
+        <HStack
+        
         border="solid ytransparent" 
-        width="600px" 
-        height="350px" 
+        width={["115%","115%","50%","40%"]}
+        height={[ "350px","350px"]} 
         display="flex" 
         bgImage="Images/bookcase.svg" 
         bgRepeat="no-repeat"
-        marginTop="-15.3%" 
-        marginLeft="35%" 
+        marginTop={["-45%","-45%","-15","-15.3%"]} 
+        marginLeft={["4%","4%","35%","35%"]} 
         flexWrap="wrap"
         spacing="28px">       
 
-          <List 
+          <List
+              
             display="inline-flex" 
             direction="row" 
             width="66%" 
@@ -175,7 +183,7 @@ function App() {
             bgGradient={isBookOver}
             ref={removeFromBoardRef}
             p="2"
-            marginBottom="-10%"
+            marginBottom={["-5%","-5%","-10%","-10%"]}
             height="15vh"
             border="solid transparent"
             cursor="pointer">
@@ -191,14 +199,15 @@ function App() {
 
           </List>
 
-          <List 
+          <List
+            className="list-2"  
             display="inline-flex" 
             direction="row" 
             width="66%"
             bgGradient={isOver}            
             ref={addToBoardRef}
             height="15vh"
-            p="4"
+            p={["-10","-10","4","4"]}
             border="solid transparent"
             cursor="pointer">
 
@@ -215,66 +224,81 @@ function App() {
 
         </HStack>
 
-        <HStack 
+        <HStack
+           
           width="30%" 
-          height="25vh" 
+          height="25vh"
+          opacity={["-10%","-10%", "50%", "100%"]} 
           bgImage="Images/clock_base.svg" 
           bgRepeat="no-repeat" 
           marginLeft="12%"
           marginTop="-30%">       
         </HStack>
 
-        <HStack 
-          width="15%" 
+        <HStack
+            
+          width={["30%","30%","25%", "35%"]} 
           height="30vh" 
           bgImage="Images/logo.svg" 
           bgRepeat="no-repeat" 
-          marginLeft="75%"
-          marginTop="-13%">          
+          marginLeft={[ "33%","33%","30%" , "75%"]}
+          marginTop={["-120%","-120%", "-13%", "-13%"]}>          
         </HStack>
 
-        <Box marginLeft="12.7%" marginTop="-13%"><AnalogicClock/></Box>
+        <Box
+          marginLeft="12.7%"
+          marginTop="-13%"
+          opacity={["-10%","-10%", "50%", "100%"]}><AnalogicClock/></Box>
 
-        <HStack 
-          width="38%" 
+        <HStack
+           
+          width={["80%","80%", "40%", "38%"]} 
           height="32vh" 
           bgImage="Images/board.svg" 
           bgRepeat="no-repeat" 
-          marginLeft="7%"
-          marginTop="17%">
+          marginLeft={["10%","10%", "10%", "7%"]}
+          marginTop={["45%","45%", "20%", "17%"]}>
             
-          <Text 
-            fontSize="xl" 
+          <Text
+             
+            fontSize={["sm","sm","xl","xl"]} 
             color="gray"
-            marginLeft="50%"
-            marginTop="-30%"
-            width="80%">SORT BY</Text>
+            marginLeft={["45%","45%", "30%", "50%"]}
+            marginTop={["-55%","-55%", "-30%", "-30%"]}
+            width={["150%","150%", "100%", "80%"]}
+            >SORT BY</Text>
 
           <HStack>
-            <Image src="Images/filter_button_active.svg" 
+            <Image 
+               
+              src="Images/filter_button_active.svg" 
               width="90%"
-              marginLeft="-310%"
-              marginTop="-80%"
+              marginLeft={["-270%","-270%","-260%","-310%"]}
+              marginTop={["-350%","-350%", "-150%", "-80%"]}
               cursor="pointer"
               onClick={() => orderedByAlphabet()}>
             </Image>            
           </HStack>
 
           <HStack>
-            <Image src="Images/filter_button.svg" 
+            <Image
+               
+              src="Images/filter_button.svg" 
               width="100%"
-              marginLeft="-180%"
-              marginTop="-83%"
+              marginLeft={["-150%","-150%","-180%","-180%"]}
+              marginTop={["-350%","-350%", "-150%", "-83%"]}
               cursor="pointer"
               onClick={() => orderedByColor()}>
             </Image>            
           </HStack>
 
           <HStack>
-            <Image src="Images/filter_button.svg" 
+            <Image
+              
+              src="Images/filter_button.svg" 
               width="100%"
-              marginLeft="-160%"
-              marginTop="-80%"
+              marginLeft={["-140%","-140%","-180%","-160%"]}
+              marginTop={["-350%","-350%", "-150%", "-80%"]}
               cursor="pointer"
               onClick={() => orderedBySize()}>
             </Image>
@@ -282,73 +306,82 @@ function App() {
 
         </HStack>
 
-        <HStack 
-          width="15%" 
+        <HStack
+           
+          width={["-50%","50%", "25%", "15%"]}
           height="35vh" 
           bgImage="Images/lady.svg" 
           bgRepeat="no-repeat" 
-          marginLeft="7%"
-          marginTop="-15%">          
+          marginLeft={["-2%","-2%", "-10%", "7%"]}
+          marginTop={["-65.5%","-65.5%", "-150%", "-15%"]}>          
         </HStack>
 
         <HStack>
-          <Image src="Images/filter_alphabetic.svg" 
-            width="1%"
-            marginLeft="21.5%"
-            marginTop="-22.5%"
+          <Image
+            
+            src="Images/filter_alphabetic.svg" 
+            width={["2%","2%","1%","1%"]}
+            marginLeft={["44%","43.2%", "25%", "21.5%"]}
+            marginTop={["-59%","-59%", "-50%", "-22.5%"]}
             cursor="pointer"
             onClick={() => orderedByAlphabet()}>
           </Image>            
         </HStack>
 
         <HStack>
-          <Image 
+          <Image
+             
             src="Images/filter_colors.svg" 
-            width="1.5%"
-            marginLeft="30.9%"
-            marginTop="-22.8%"
+            width={["4%","4%","3%","1.5%"]}
+            marginLeft={["61.5%","61.5%", "55%", "30.9%"]}
+            marginTop={["-60%","-60%", "-50%", "-22.8%"]}
             cursor="pointer"
             onClick={() => orderedByColor()}>
           </Image>            
         </HStack>
 
         <HStack>
-          <Image  
+          <Image 
+             
             src="Images/filter_sizes.svg" 
-            width="1.5%"
-            marginLeft="36%"
-            marginTop="-22.7%"
+            width={["4%","4%","3%","1.5%"]}
+            marginLeft={["72%","72.2%", "55%", "36%"]}
+            marginTop={["-60%","-60%", "-50%", "-22.7%"]}
             cursor="pointer"
             onClick={() => orderedBySize()}>
           </Image> 
 
         </HStack>
-        <Text 
-          fontSize="xl" 
+        <Text
+           
+          fontSize={["sm","sm","xl","xl"]}  
           color="gray"
-          marginLeft="21%"
-          marginTop="-11%"
-          width="20%"
-          fontSize="4xl">_________________</Text>
+          marginLeft={["40%","40%","21%","21%"]}
+          marginTop={["-30%","-30%","-11%","-11%"]}
+          width={["60%","60%","20%","20%"]}
+          fontSize={["2xl","2xl","4xl","4xl"]}>_________________</Text>
 
           <HStack>
-            <Image 
+            <Image
+
               src="Images/button.svg" 
-              width="15%"
-              marginLeft="22%"
+              width={["35%","35%","15%","15%"]}
+              marginLeft={["44%","44%","21%","22%"]}
               cursor="pointer"
               onClick={() => refreshPage()}>
+
           </Image>
                       
           </HStack>
 
-          <Button  
-            width="10%"
+          <Button
+              
+            width={["25%","25%","10%","10%"]}
             bg="#38E655"
             variant='solid'
             border="white"
-            marginLeft="45%"
-            marginTop="-5%"
+            marginLeft={["33%","33%","35%","45%"]}
+            marginTop={["-75%","-75%","-35%","-5%"]}
             onClick={() => setBook([
               ...books, 
               
@@ -367,35 +400,38 @@ function App() {
               
             ])}>Add Books</Button>
 
-            <Button  
-              width="10%"
+            <Button
+                
+              width={["25%","25%","10%","10%"]}
               bg="#38E655"
               variant='solid'
               border="white"
-              marginLeft="60%"
-              marginTop="-8.2%"
+              marginLeft={["60%","60%","35%","60%"]}
+              marginTop={["-85.5%","-85.5%","-35%","-8.2%"]}
               onClick={() => handleDeleteBook(books.index)}
               >Remove Books</Button>
 
             <HStack>    
-              <Image 
+              <Image
+                 
                 src="Images/filter_button.svg" 
-                width="3.5%"
-                marginLeft="25%"
-                marginTop="-22%"
+                width={["7%","7%","3.5%","3.5%"]}
+                marginLeft={["50%","50%","35%","25%"]}
+                marginTop={["-55%","-55%","-35%","-22%"]}
                 cursor="pointer"
                 onClick={() => orderedByYear()}>
               </Image>            
             </HStack>
 
-            <Text 
-            fontSize="xl" 
-            color="red"
-            marginLeft="25.4%"
-            marginTop="-12%"
-            width="50%"
-            cursor="pointer"
-            onClick={() => orderedByYear()}>Year</Text>
+            <Text
+             
+              fontSize={["sm","sm","xl","xl"]}   
+              color="red"
+              marginLeft={["50.5%","50.5%","35%","25.4%"]}
+              marginTop={["-30%","-30%","-35%","-12%"]}
+              width="10%"
+              cursor="pointer"
+              onClick={() => orderedByYear()}>Year</Text>
 
       </Container>
 

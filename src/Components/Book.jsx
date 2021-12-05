@@ -2,7 +2,7 @@ import { ListItem } from "@chakra-ui/react";
 import React from "react";
 import { useDrag } from "react-dnd";
 
-//Making books drag and drop
+//Making books Drag and Drop.
 
 const Book = ({ item, bookType, onDropBook, index }) => {
   const [isDragging, dragRef] = useDrag({
@@ -22,8 +22,9 @@ const Book = ({ item, bookType, onDropBook, index }) => {
 
   return (
     <ListItem 
-      maxW="9%"
+      maxW={["8%","8%","9%","9%"]}
       maxH="100%"
+      padding={["0.4%","0.4%","0%","0%"]}
       ref={dragRef}
     >
       {item.book}
