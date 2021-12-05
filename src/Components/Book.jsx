@@ -2,8 +2,10 @@ import { ListItem } from "@chakra-ui/react";
 import React from "react";
 import { useDrag } from "react-dnd";
 
+//Making books drag and drop
+
 const Book = ({ item, bookType, onDropBook, index }) => {
-  const [{ isDragging }, dragRef] = useDrag({
+  const [isDragging, dragRef] = useDrag({
     type: bookType,
     item: () => ({ ...item, index }),
     end: (item, monitor) => {

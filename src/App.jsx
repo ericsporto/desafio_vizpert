@@ -95,6 +95,7 @@ function App() {
     console.log("handleDeleteBook working")
     const filteredBooks = books.filter((books) => books.index !== deletedBook)
     setBook(filteredBooks)
+    setBoard(filteredBooks)
     
   }
 
@@ -149,7 +150,8 @@ function App() {
       <Container 
       border="solid transparent" 
       bgImage="Images/ground.svg" 
-      height="49vh" maxW="100%" 
+      height="49vh" 
+      maxW="100%" 
       marginTop="24%">
 
         <HStack 
@@ -162,8 +164,7 @@ function App() {
         marginTop="-15.3%" 
         marginLeft="35%" 
         flexWrap="wrap"
-        spacing="28px">
-        
+        spacing="28px">       
 
           <List 
             display="inline-flex" 
@@ -176,8 +177,9 @@ function App() {
             p="2"
             marginBottom="-10%"
             height="15vh"
-            border="solid transparent"            
-          >
+            border="solid transparent"
+            cursor="pointer">
+
             {books.map((p, i) => (
               <Book                
                 item={p}
@@ -198,15 +200,16 @@ function App() {
             height="15vh"
             p="4"
             border="solid transparent"
-          >
+            cursor="pointer">
+
             {board.map((p, i) => (
               <Book
                 item={p}
                 key={i}
                 index={i}
                 bookType="board"
-                onDropBook={removeBookFromBoard}
-              />
+                onDropBook={removeBookFromBoard}/>
+
             ))}
           </List>
 
@@ -215,7 +218,8 @@ function App() {
         <HStack 
           width="30%" 
           height="25vh" 
-          bgImage="Images/clock_base.svg" bgRepeat="no-repeat" 
+          bgImage="Images/clock_base.svg" 
+          bgRepeat="no-repeat" 
           marginLeft="12%"
           marginTop="-30%">       
         </HStack>
@@ -226,9 +230,7 @@ function App() {
           bgImage="Images/logo.svg" 
           bgRepeat="no-repeat" 
           marginLeft="75%"
-          marginTop="-13%">
-          
-
+          marginTop="-13%">          
         </HStack>
 
         <Box marginLeft="12.7%" marginTop="-13%"><AnalogicClock/></Box>
@@ -240,6 +242,7 @@ function App() {
           bgRepeat="no-repeat" 
           marginLeft="7%"
           marginTop="17%">
+            
           <Text 
             fontSize="xl" 
             color="gray"
@@ -248,31 +251,35 @@ function App() {
             width="80%">SORT BY</Text>
 
           <HStack>
-            <Image src="Images/filter_button_active.svg" width="90%"
+            <Image src="Images/filter_button_active.svg" 
+              width="90%"
               marginLeft="-310%"
               marginTop="-80%"
-              onClick={() => orderedByAlphabet()}
-              
-            >
+              cursor="pointer"
+              onClick={() => orderedByAlphabet()}>
             </Image>            
           </HStack>
+
           <HStack>
-            <Image src="Images/filter_button.svg" width="100%"
+            <Image src="Images/filter_button.svg" 
+              width="100%"
               marginLeft="-180%"
               marginTop="-83%"
-              onClick={() => orderedByColor()}
-              
-              >
+              cursor="pointer"
+              onClick={() => orderedByColor()}>
             </Image>            
           </HStack>
+
           <HStack>
-            <Image src="Images/filter_button.svg" width="100%"
+            <Image src="Images/filter_button.svg" 
+              width="100%"
               marginLeft="-160%"
               marginTop="-80%"
+              cursor="pointer"
               onClick={() => orderedBySize()}>
             </Image>
-                        
           </HStack>
+
         </HStack>
 
         <HStack 
@@ -289,25 +296,29 @@ function App() {
             width="1%"
             marginLeft="21.5%"
             marginTop="-22.5%"
-            onClick={() => orderedByAlphabet()}
-            
-          >
+            cursor="pointer"
+            onClick={() => orderedByAlphabet()}>
           </Image>            
         </HStack>
+
         <HStack>
-          <Image src="Images/filter_colors.svg" 
+          <Image 
+            src="Images/filter_colors.svg" 
             width="1.5%"
             marginLeft="30.9%"
             marginTop="-22.8%"
-            onClick={() => orderedByColor()}
-          >
+            cursor="pointer"
+            onClick={() => orderedByColor()}>
           </Image>            
         </HStack>
+
         <HStack>
-          <Image id="image-1" src="Images/filter_sizes.svg" 
+          <Image  
+            src="Images/filter_sizes.svg" 
             width="1.5%"
             marginLeft="36%"
             marginTop="-22.7%"
+            cursor="pointer"
             onClick={() => orderedBySize()}>
           </Image> 
 
@@ -321,11 +332,12 @@ function App() {
           fontSize="4xl">_________________</Text>
 
           <HStack>
-            <Image src="Images/button.svg" 
+            <Image 
+              src="Images/button.svg" 
               width="15%"
               marginLeft="22%"
-              onClick={() => refreshPage()}
-            >
+              cursor="pointer"
+              onClick={() => refreshPage()}>
           </Image>
                       
           </HStack>
@@ -353,7 +365,7 @@ function App() {
               year: 2004
               },
               
-            ])}>Add Book</Button>
+            ])}>Add Books</Button>
 
             <Button  
               width="10%"
@@ -363,22 +375,26 @@ function App() {
               marginLeft="60%"
               marginTop="-8.2%"
               onClick={() => handleDeleteBook(books.index)}
-            >Remove Book</Button>
+              >Remove Books</Button>
 
             <HStack>    
-              <Image src="Images/filter_button.svg" 
+              <Image 
+                src="Images/filter_button.svg" 
                 width="3.5%"
                 marginLeft="25%"
                 marginTop="-22%"
+                cursor="pointer"
                 onClick={() => orderedByYear()}>
               </Image>            
             </HStack>
+
             <Text 
             fontSize="xl" 
             color="red"
             marginLeft="25.4%"
             marginTop="-12%"
-            width="80%"
+            width="50%"
+            cursor="pointer"
             onClick={() => orderedByYear()}>Year</Text>
 
       </Container>
