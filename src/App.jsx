@@ -9,12 +9,23 @@ import AnalogicClock from "./Components/AnalogicClock";
 
 function App() {
   const [books, setBook] = useState([
-    { 
-      book: <Image src="Images/book_a.svg" boxSize="80px"/>,
+    { book: <Image src="Images/book_f.svg" boxSize="80px"/>,
+      size : 10,
+      id: 6,
+      color: 9,
+      year: 1908
+   },
+    { book: <Image src="Images/book_a.svg" boxSize="80px"/>,
       size: 4,
       id: 1,
       color: 3,
       year: 1956
+   },
+    { book: <Image src="Images/book_h.svg" boxSize="80px"/>,
+      size: 3,
+      id: 8,
+      color: 6,
+      year: 2007
    },
     { book: <Image src="Images/book_b.svg" boxSize="80px"/>,
       size: 9,
@@ -28,6 +39,12 @@ function App() {
       color: 2,
       year: 1945
    },
+   { book: <Image src="Images/book_i.svg" boxSize="80px"/>,
+      size: 7,
+      id: 9,
+      color: 4,
+      year: 2015
+   },
     { book: <Image src="Images/book_d.svg" boxSize="80px"/>,
       size: 1,
       id: 4,
@@ -40,29 +57,12 @@ function App() {
       color: 5,
       year: 1979
    },
-    { book: <Image src="Images/book_f.svg" boxSize="80px"/>,
-      size : 10,
-      id: 6,
-      color: 9,
-      year: 1908
-   },
+    
     { book: <Image src="Images/book_g.svg" boxSize="80px"/>,
       size: 11,
       id: 7,
       color: 8,
       year: 1915
-   },
-    { book: <Image src="Images/book_h.svg" boxSize="80px"/>,
-      size: 3,
-      id: 8,
-      color: 6,
-      year: 2007
-   },
-    { book: <Image src="Images/book_i.svg" boxSize="80px"/>,
-      size: 7,
-      id: 9,
-      color: 4,
-      year: 2015
    },
 
   ])
@@ -367,6 +367,7 @@ function App() {
               src="Images/button.svg" 
               width={["35%","35%","15%","15%"]}
               marginLeft={["44%","44%","21%","22%"]}
+              marginTop={["1%","1%","0%","0%"]}
               cursor="pointer"
               onClick={() => refreshPage()}>
 
@@ -387,13 +388,13 @@ function App() {
               
               { book: <Image src="Images/book_j.svg" boxSize="80px"/>,
               size: 5,
-              id: 10,
+              id: 11,
               color: 10,
               year: 1988
               },
               { book: <Image src="Images/book_k.svg" boxSize="80px"/>,
               size: 6,
-              id: 11,
+              id: 10,
               color: 11,
               year: 2004
               },
@@ -432,6 +433,15 @@ function App() {
               width="10%"
               cursor="pointer"
               onClick={() => orderedByYear()}>Year</Text>
+
+            <Text
+             
+             fontSize={["sm","sm","xl","xl"]}   
+             color="white"
+             marginLeft={["73%","73%","80%","80%"]}
+             marginTop={["24%","24%","4%","4.2%"]}
+             width={["50%","50%","20%","20%"]}
+             cursor="pointer">Eric Carvalho © 2021</Text>
 
       </Container>
 
